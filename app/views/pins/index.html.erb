@@ -2,7 +2,9 @@
 
 <h1>Pins</h1>
 
-<%= link_to "New pin", new_pin_path %>
+<%# if can? :create, Pin %>
+  <%= link_to "New pin", new_pin_path %>
+<%# end %>
 
 <div id="pins">
   <% @pins.each do |pin| %>

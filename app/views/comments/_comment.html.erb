@@ -5,6 +5,8 @@
     <%= comment.body %>
   </p>
 
-  <%= link_to "Edit this comment", edit_pin_comment_path(pin, comment) %>
-  <%= button_to "Destroy this comment", [pin, comment], method: :delete %>
+  <% if can? :manage, comment %>
+    <%= link_to "Edit this comment", edit_pin_comment_path(pin, comment) %>
+    <%= button_to "Destroy this comment", [pin, comment], method: :delete %>
+  <% end %>
 </div>
