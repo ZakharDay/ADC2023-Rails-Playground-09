@@ -1,6 +1,8 @@
 <div id="<%= dom_id pin %>">
   <%= image_tag pin.pin_image.url, width: 300 if pin.pin_image.url %>
 
+  <%= pin.user.email %>
+
   <h2>
     <%= pin.title %>
   </h2>
