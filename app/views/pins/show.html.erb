@@ -5,7 +5,9 @@
 <hr>
 <h3>Comments</h3>
 
-<%= render @pin.comments %>
+<%= link_to "New comment", new_pin_comment_path(@pin) %>
+
+<%= render @pin.comments, pin: @pin %>
 
 
 <div>

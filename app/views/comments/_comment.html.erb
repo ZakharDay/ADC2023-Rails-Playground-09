@@ -3,6 +3,6 @@
     <%= comment.body %>
   </p>
 
-    <%#= comment.pin_id %>
-
+  <%= link_to "Edit this comment", edit_pin_comment_path(pin, comment) %>
+  <%= button_to "Destroy this comment", [pin, comment], method: :delete %>
 </div>

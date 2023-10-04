@@ -2,6 +2,8 @@
 
 <h1>Pins</h1>
 
+<%= link_to "New pin", new_pin_path %>
+
 <div id="pins">
   <% @pins.each do |pin| %>
     <%= link_to pin, class: 'pinCard' do %>
@@ -9,5 +11,3 @@
     <% end %>
   <% end %>
 </div>
-
-<%= link_to "New pin", new_pin_path %>
