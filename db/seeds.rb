@@ -3,6 +3,7 @@ raw_text = "Дом Наркомфина — один из знаковых па�
 
 def seed
   reset_db
+  create_admin
   create_users
   create_pins(100)
   create_comments(2..8)
@@ -12,6 +13,17 @@ def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].invoke
+end
+
+def create_admin
+  user_data = {
+    email: "admin@email.com",
+    password: "testtest",
+    admin: true
+  }
+
+  user = User.create!(user_data)
+  puts "Admin created with id #{user.id}"
 end
 
 def create_users

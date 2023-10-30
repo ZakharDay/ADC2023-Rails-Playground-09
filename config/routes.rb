@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
-  resources :subscriptions
-  devise_for :users
-  resources :pins do
+  namespace :admin do
+    resources :pins do
+      resources :comments
+    end
+
     resources :comments
+    resources :subscriptions
+
+    root to: "admin/pins#index"
   end
+
+  resources :subscriptions, only: [:create, :show]
+
+  devise_for :users
 
   get 'welcome/index'
   get 'welcome/about'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "welcome#index"
+  root to: "welcome#index"
 end

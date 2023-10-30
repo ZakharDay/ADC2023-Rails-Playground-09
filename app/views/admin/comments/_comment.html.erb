@@ -1,0 +1,12 @@
+<div id="<%= dom_id comment %>">
+  <%= comment.user.email %>
+
+  <p>
+    <%= comment.body %>
+  </p>
+
+  <% if can? :manage, comment %>
+    <%= link_to "Edit this comment", edit_admin_pin_comment_path(pin, comment) %>
+    <%= button_to "Destroy this comment", [:admin, pin, comment], method: :delete %>
+  <% end %>
+</div>
