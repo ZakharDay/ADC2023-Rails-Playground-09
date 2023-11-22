@@ -9,4 +9,10 @@
     <%= link_to "Edit this comment", edit_admin_pin_comment_path(pin, comment) %>
     <%= button_to "Destroy this comment", [:admin, pin, comment], method: :delete %>
   <% end %>
+
+  <div class="commentReplies">
+    <% comment.replies.each do |reply| %>
+      <%= render reply, partial: "admin/comments/comment", comment: reply, pin: pin %>
+    <% end %>
+  </div>
 </div>

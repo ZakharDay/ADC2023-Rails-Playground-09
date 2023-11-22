@@ -6,3 +6,11 @@ nav {
   display: flex;
   justify-content: space-between;
 }
+
+.commentReplies {
+  padding-left: 40px;
+}
+
+.commentReplies > div {
+  padding: 20px 0;
+}
