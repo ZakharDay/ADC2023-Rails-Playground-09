@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :profiles
+  resources :profile_pictures
+
+  resources :pins do
+    resources :comments, only: [:create]
+  end
+
+  resources :poly_comments, only: [:create]
+
   resources :posts
 
   namespace :api do

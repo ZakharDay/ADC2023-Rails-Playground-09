@@ -1,4 +1,4 @@
-<div id="<%= dom_id video_post %>">
+<%= link_to post_path(video_post) do %>
   <iframe
     width="560"
     height="315"
@@ -11,4 +11,4 @@
 
   <h2><%= video_post.title %></h2>
   <p><%= video_post.body %></p>
-</div>
+<% end %>

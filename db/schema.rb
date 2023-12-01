@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_22_111237) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_29_110820) do
   create_table "comments", force: :cascade do |t|
     t.text "body"
     t.integer "pin_id"
@@ -29,12 +29,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_22_111237) do
     t.integer "user_id"
   end
 
+  create_table "poly_comments", force: :cascade do |t|
+    t.text "body"
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_poly_comments_on_commentable"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "type"
     t.string "title"
     t.text "body"
     t.string "cover"
     t.string "video"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profile_pictures", force: :cascade do |t|
+    t.string "image"
+    t.integer "profile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

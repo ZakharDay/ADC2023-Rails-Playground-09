@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
@@ -66,10 +67,6 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     # def post_params
     #   params.require(:post).permit(:type, :title, :body, :cover, :video)
-    # end
-
-    # def text_post_params
-    #   params.require(:text_post).permit(:type, :title, :body, :cover, :video)
     # end
 
     def sti_post_params

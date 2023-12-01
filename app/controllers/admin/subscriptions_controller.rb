@@ -1,5 +1,4 @@
-class Admin::SubscriptionsController < ApplicationController
-  load_and_authorize_resource
+class Admin::SubscriptionsController < Admin::ApplicationController
   before_action :set_subscription, only: %i[ show edit update destroy ]
 
   # GET /subscriptions or /subscriptions.json

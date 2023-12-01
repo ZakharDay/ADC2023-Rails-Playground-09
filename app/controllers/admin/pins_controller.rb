@@ -1,5 +1,4 @@
-class Admin::PinsController < ApplicationController
-  load_and_authorize_resource
+class Admin::PinsController < Admin::ApplicationController
   before_action :set_pin, only: %i[ show edit update destroy ]
 
   # GET /pins or /pins.json
