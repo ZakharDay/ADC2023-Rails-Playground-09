@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Profile pictures</h1>
+
+<div id="profile_pictures">
+  <% @profile_pictures.each do |profile_picture| %>
+    <%= render profile_picture %>
+    <p>
+      <%= link_to "Show this profile picture", profile_picture %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New profile picture", new_profile_picture_path %>

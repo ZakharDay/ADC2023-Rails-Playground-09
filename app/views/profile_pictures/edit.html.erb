@@ -1,0 +1,10 @@
+<h1>Editing profile picture</h1>
+
+<%= render "form", profile_picture: @profile_picture %>
+
+<br>
+
+<div>
+  <%= link_to "Show this profile picture", @profile_picture %> |
+  <%= link_to "Back to profile pictures", profile_pictures_path %>
+</div>

@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @pin %>
+
+<h3>PolyComments</h3>
+
+<%= render "poly_comments/form", commentable: @pin, poly_comment: PolyComment.new %>
+<%= render @pin.poly_comments %>
+
+<h3>Comments</h3>
+
+<%= render "comments/form", pin: @pin, comment: Comment.new  %>
+<%= render @pin.comments, pin: @pin %>
+
+<% if can? :manage, @pin %>
+  <div>
+    <%= link_to "Edit this pin", edit_pin_path(@pin) %>
+    <%= button_to "Destroy this pin", @pin, method: :delete %>
+  </div>
+<% end%>

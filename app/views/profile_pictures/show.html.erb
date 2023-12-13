@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @profile_picture %>
+
+<div>
+  <%= link_to "Edit this profile picture", edit_profile_picture_path(@profile_picture) %> |
+  <%= link_to "Back to profile pictures", profile_pictures_path %>
+
+  <%= button_to "Destroy this profile picture", @profile_picture, method: :delete %>
+</div>
