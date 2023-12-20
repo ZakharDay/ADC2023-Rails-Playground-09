@@ -14,6 +14,9 @@ class Ability
 
     return unless user.present?
 
+    can :create, Post
+    # can :manage, Post, user_id: user.id
+
     can :create, Pin
     can :manage, Pin, user_id: user.id
 

@@ -16,7 +16,8 @@
   <div>
     <%= form.label :type, style: "display: block" %>
     <%#= form.text_field :type %>
-    <%= form.select :type, ["TextPost", "ImagePost", "VideoPost", "FigmaPost"] %>
+    <%= form.select :type, [["Текстовый пост", "TextPost"], ["Пост с картинкой", "ImagePost"], ["Пост с видео", "VideoPost"], ["Ого фигма", "FigmaPost"]] %>
+    <%#= form.select :type, ["TextPost", "ImagePost", "VideoPost", "FigmaPost"] %>
   </div>
 
   <div>

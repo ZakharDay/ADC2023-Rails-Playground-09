@@ -4,6 +4,14 @@
 
 body {
   font-family: Helvetica;
+
+  &.default {
+    background-color: white;
+  }
+
+  &.welcome {
+    background-color: green;
+  }
 }
 
 nav {
@@ -36,5 +44,24 @@ nav {
 
   & > div {
     padding: 20px;
+  }
+}
+
+.circles {
+  display: flex;
+  gap: 10px;
+
+  .circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+
+    &.active {
+      background: blue;
+    }
+
+    &.inactive {
+      background: lightgrey;
+    }
   }
 }

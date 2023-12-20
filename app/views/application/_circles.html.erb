@@ -1,0 +1,12 @@
+<%
+  tasks_maximum = 7
+  tasks_total = 4
+  i = 1
+%>
+
+<div class="circles">
+  <% tasks_maximum.times do %>
+    <div class="circle <%= i <= tasks_total ? 'active' : 'inactive' %>"></div>
+    <% i += 1 %>
+  <% end %>
+</div>
