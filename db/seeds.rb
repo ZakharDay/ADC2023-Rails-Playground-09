@@ -3,6 +3,7 @@ raw_text = "Дом Наркомфина — один из знаковых па�
 
 def seed
   reset_db
+  clean_content_folders
   create_admin
   create_users
   create_pins(100)
@@ -14,6 +15,10 @@ def reset_db
   Rake::Task['db:drop'].invoke
   Rake::Task['db:create'].invoke
   Rake::Task['db:migrate'].invoke
+end
+
+def clean_content_folders
+  FileUtils.rm_rf('public/uploads')
 end
 
 def create_admin

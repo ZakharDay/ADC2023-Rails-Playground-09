@@ -7,7 +7,7 @@
       <%= link_to "Comments", admin_comments_url %>
       <%= link_to "Subscriptions", admin_subscriptions_url %>
       <%= link_to "Feed", welcome_feed_url %>
-    <% elsif user_signed_in? %>
+    <% else %>
       <%= link_to "Pins", pins_url %>
       <%= link_to "Feed", welcome_feed_url %>
     <% end %>

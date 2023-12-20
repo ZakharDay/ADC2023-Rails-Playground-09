@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ADC2023RailsPlayground09</title>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <%= display_meta_tags site: "Название сервиса",
+      reverse: true,
+      og: {
+        title: :title,
+        image: request.base_url + "/shared/index_share.png",
+        url: request.base_url + request.path
+      }
+    %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
@@ -16,7 +25,7 @@
     <section class="contentArea">
       <%= yield %>
     </section>
-    
+
     <%= render 'footer' %>
   </body>
 </html>

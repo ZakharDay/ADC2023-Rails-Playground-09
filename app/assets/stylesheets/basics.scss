@@ -32,8 +32,9 @@ nav {
 
 .commentReplies {
   padding-left: 40px;
-}
+  background-color: var(--light);
 
-.commentReplies > div {
-  padding: 20px;
+  & > div {
+    padding: 20px;
+  }
 }

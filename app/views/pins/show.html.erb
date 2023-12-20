@@ -1,5 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
+<h1><%= title @pin.title %></h1>
+
 <%= render @pin %>
 
 <h3>PolyComments</h3>
@@ -9,8 +11,15 @@
 
 <h3>Comments</h3>
 
-<%= render "comments/form", pin: @pin, comment: Comment.new  %>
-<%= render @pin.comments, pin: @pin %>
+<%= turbo_frame_tag :comment_form do %>
+  <%= render "comments/form", pin: @pin, comment: Comment.new  %>
+<% end %>
+
+<%= turbo_stream_from "comments" %>
+
+<%= turbo_frame_tag "comments" do %>
+  <%= render @pin.comments, pin: @pin %>
+<% end %>
 
 <% if can? :manage, @pin %>
   <div>

@@ -3,12 +3,26 @@
 
   <%= pin.user.email %>
 
-  <h2>
-    <%= pin.title %>
-  </h2>
-
   <p>
     <%= pin.description %>
   </p>
+
+  <h3>Tags</h3>
+  <div>
+    <% pin.tag_list.each do |tag| %>
+      <div>
+        <%= tag %>
+      </div>
+    <% end %>
+  </div>
+
+  <h3>Categories</h3>
+  <div>
+    <% pin.category_list.each do |tag| %>
+      <div>
+        <%= tag %>
+      </div>
+    <% end %>
+  </div>
 
 </div>

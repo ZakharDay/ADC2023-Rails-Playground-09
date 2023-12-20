@@ -8,10 +8,11 @@ class Ability
       can :manage, :all
     end
 
-    return unless user.present?
-
     can :read, Pin
     can :read, Comment
+    can :create, Comment
+
+    return unless user.present?
 
     can :create, Pin
     can :manage, Pin, user_id: user.id

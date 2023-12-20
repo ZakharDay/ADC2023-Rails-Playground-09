@@ -1,18 +1,20 @@
-<div class="comment" id="<%= dom_id comment %>">
-  <%= comment.user.email %>
+<%= turbo_frame_tag dom_id(comment) do %>
+  <div class="comment" id="<%= dom_id comment %>">
+    <%= comment.user.email %>
 
-  <p>
-    <%= comment.body %>
-  </p>
+    <p>
+      <%= comment.body %>
+    </p>
 
-  <% if can? :manage, comment %>
-    <%= link_to "Edit this comment", edit_pin_comment_path(pin, comment) %>
-    <%= button_to "Destroy this comment", [pin, comment], method: :delete %>
-  <% end %>
+    <%# if can? :manage, comment %>
+      <%= link_to "Edit this comment", edit_pin_comment_path(comment.pin, comment) %>
+      <%#= button_to "Destroy this comment", [pin, comment], method: :delete %>
+    <%# end %>
 
-  <div class="commentReplies">
-    <% comment.replies.each do |reply| %>
-      <%= render reply, partial: "comments/comment", comment: reply, pin: pin %>
-    <% end %>
+    <div class="commentReplies">
+      <% comment.replies.each do |reply| %>
+        <%= render reply, partial: "comments/comment", comment: reply, pin: reply.pin %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end%>

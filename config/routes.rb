@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   resources :profile_pictures
 
   resources :pins do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :edit, :update]
+
+    collection do
+      get "by_tag/:tag", to: "pins#by_tag", as: "tagged"
+      get "by_category/:category", to: "pins#by_category", as: "categorized"
+    end
   end
 
   resources :poly_comments, only: [:create]

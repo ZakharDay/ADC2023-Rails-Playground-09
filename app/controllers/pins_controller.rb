@@ -5,10 +5,29 @@ class PinsController < ApplicationController
   # GET /pins or /pins.json
   def index
     @pins = Pin.all
+
+    # Meta
+    # @title = "Пины | Название сервиса"
+    # @description = ""
+    # @keywords = ""
+    # end
+  end
+
+  def by_tag
+    @pins = Pin.tagged_with(params[:tag])
+    render :index
+  end
+
+  def by_category
+    @pins = Pin.tagged_with(params[:category])
+    render :index
   end
 
   # GET /pins/1 or /pins/1.json
   def show
+    # Meta
+    @title = "#{@pin.title} | Название сервиса"
+    # end
   end
 
   # GET /pins/new
@@ -61,11 +80,11 @@ class PinsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_pin
-      @pin = Pin.find(params[:id])
+      @pin = Pin.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def pin_params
-      params.require(:pin).permit(:title, :description, :pin_image).merge(user_id: current_user.id)
+      params.require(:pin).permit(:title, :description, :pin_image, :tag_list, :category_list).merge(user_id: current_user.id)
     end
 end
