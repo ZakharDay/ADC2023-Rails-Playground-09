@@ -1,4 +1,6 @@
 class WelcomeController < ApplicationController
+  layout 'custom'
+
   def index
     @subscription = Subscription.new
     @color = '#'

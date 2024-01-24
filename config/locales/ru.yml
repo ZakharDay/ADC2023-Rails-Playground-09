@@ -1,0 +1,19 @@
+ru:
+  activerecord:
+    models:
+      user:
+        one: 'Пользователь'
+        few: 'Пользователя'
+        many: 'Пользователей'
+        other: 'Пользователя'
+      support: 'Обращение в поддержку'
+    attributes:
+      user:
+        email: 'Электронная почта'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        sign_up: 'Тест'
+      support:
+        email: 'Электронная почта'
+        comment: 'Ваше обращение'
+  adc: 'арт, дизайн и кодинг'

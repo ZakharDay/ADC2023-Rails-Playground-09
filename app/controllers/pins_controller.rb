@@ -1,6 +1,7 @@
 class PinsController < ApplicationController
   load_and_authorize_resource
   before_action :set_pin, only: %i[ show edit update destroy ]
+  layout :resolve_layout
 
   # GET /pins or /pins.json
   def index
@@ -86,5 +87,16 @@ class PinsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def pin_params
       params.require(:pin).permit(:title, :description, :pin_image, :tag_list, :category_list).merge(user_id: current_user.id)
+    end
+
+    def resolve_layout
+      case action_name
+      when "show"
+        "custom"
+      when "index"
+        "pins"
+      else
+        "application"
+      end
     end
 end

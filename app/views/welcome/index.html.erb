@@ -8,9 +8,27 @@
 
 <p style="color: green"><%= notice %></p>
 
-<h1 style="color: <%= @color %>">Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<h1 style="color: <%= @color %>">
+  <%= I18n.t :adc %>
+</h1>
+
+<p>
+  Привет
+  <%= I18n.t 'user.one', scope: [:activerecord, :models] %>
+</p>
+
+<br><br>
+
+<p>
+  21 <%= User.model_name.human(count: 21) %>
+</p>
+
+<br><br>
 
 <%= turbo_frame_tag dom_id(@subscription) do %>
   <%= render 'subscriptions/form', subscription: @subscription %>
 <% end %>
+
+<%= render "support_form", support: Support.new %>
+
+<%#= link_to "Get Support", support_request_support_path %>
