@@ -1,0 +1,3 @@
+<%= turbo_frame_tag 'cartbar' do %>
+  <div>Товаров в корзине: <%= @guest.carts.last.products.count %></div>
+<% end %>
