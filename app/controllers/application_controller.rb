@@ -2,8 +2,9 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_guest
 
   def authenticate_guest
+    # cookies.delete :guest_token
+
     if cookies[:guest_token]
-      # cookies.delete :guest_token
       @guest = Guest.find_by_token(cookies[:guest_token])
     else
       guest_token = SecureRandom.uuid
