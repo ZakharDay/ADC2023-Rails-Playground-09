@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_24_095641) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_07_083910) do
   create_table "carts", force: :cascade do |t|
     t.integer "cartable_id"
     t.string "cartable_type"
@@ -47,6 +47,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_24_095641) do
 
   create_table "guests", force: :cascade do |t|
     t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "invites", force: :cascade do |t|
+    t.integer "inviter_id"
+    t.integer "invitee_id"
+    t.string "email"
+    t.text "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

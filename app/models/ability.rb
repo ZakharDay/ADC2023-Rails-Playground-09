@@ -26,6 +26,8 @@ class Ability
     can :read, Post
     can :read, Profile
     can :manage, Profile, user_id: user.id
+
+    can :manage, Invite, inviter_id: user.id
     
     # can :create, Comment
     # can :manage, Comment, user_id: user.id

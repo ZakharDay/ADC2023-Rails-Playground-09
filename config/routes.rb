@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  patch 'invites/:id', to: 'invites#update', as: 'invite'
+
   get 'cart/add/:id', to: 'carts#add', as: 'cart_add'
   resources :products
 
@@ -45,7 +47,7 @@ Rails.application.routes.draw do
 
   resources :subscriptions, only: [:create, :show]
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'registrations' }
 
   get 'welcome/index'
   get 'welcome/about'

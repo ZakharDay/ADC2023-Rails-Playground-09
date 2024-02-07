@@ -3,6 +3,9 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    @invites = @profile.user.invites.left
+    @invites_left = @invites.count
+    @invite = @invites.first
   end
 
   def edit
