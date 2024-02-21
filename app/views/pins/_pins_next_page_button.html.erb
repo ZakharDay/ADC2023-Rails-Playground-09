@@ -1,0 +1,3 @@
+<% if pins.next_page %>
+  <%= link_to 'Загрузить ещё', pins_path(page: pins.next_page), data: {turbo_stream: true, pins_target: 'nextButton' } %>
+<% end %>

@@ -1,0 +1,2 @@
+<%= turbo_stream.append 'pins', partial: 'pins_page', locals: { pins: @pins } %>
+<%= turbo_stream.update 'pins_pagination', partial: 'pins_next_page_button', locals: { pins: @pins } %>

@@ -1,41 +1,39 @@
-<p style="color: green"><%= notice %></p>
+<section data-controller="pins">
+  <p style="color: green"><%= notice %></p>
 
-<h1><%= title "Пины" %></h1>
+  <h1><%= title "Пины" %></h1>
 
-<h3>Categories</h3>
-<% Pin.tag_counts_on(:categories).each do |tag| %>
-  <div>
-    <%= link_to tagged_pins_path(tag.name) do %>
-      <%= tag.name %> (<%= tag.taggings_count %>)
-    <% end %>
-  </div>
-<% end %>
-
-<h3>Tags</h3>
-<% Pin.tag_counts_on(:tags).each do |tag| %>
-  <div>
-    <%= link_to tagged_pins_path(tag.name) do %>
-      <%= tag.name %> (<%= tag.taggings_count %>)
-    <% end %>
-  </div>
-<% end %>
-
-<br><br>
-
-<% if can? :create, Pin %>
-  <%= link_to "New pin", new_pin_path %>
-<% end %>
-
-<div id="pins">
-  <% @pins.each_with_index do |pin, index| %>
-    <%= link_to pin, class: 'pinCard' do %>
-      <%= render pin %>
-    <% end %>
-
-    <% if index == 3 %>
-      <%= render 'banner' %>
-    <% end %>
+  <h3>Categories</h3>
+  <% Pin.tag_counts_on(:categories).each do |tag| %>
+    <div>
+      <%= link_to tagged_pins_path(tag.name) do %>
+        <%= tag.name %> (<%= tag.taggings_count %>)
+      <% end %>
+    </div>
   <% end %>
-</div>
 
-<%= will_paginate @pins %>
+  <h3>Tags</h3>
+  <% Pin.tag_counts_on(:tags).each do |tag| %>
+    <div>
+      <%= link_to tagged_pins_path(tag.name) do %>
+        <%= tag.name %> (<%= tag.taggings_count %>)
+      <% end %>
+    </div>
+  <% end %>
+
+  <br><br>
+
+  <% if can? :create, Pin %>
+    <%= link_to "New pin", new_pin_path %>
+  <% end %>
+
+  <%= turbo_frame_tag 'pins' do %>
+    <%= render partial: 'pins_page', locals: { pins: @pins } %>
+  <% end %>
+
+  <%= turbo_frame_tag 'pins_pagination' do %>
+    <%= render partial: 'pins_next_page_button', locals: { pins: @pins } %>
+  <% end %>
+
+  <%#= will_paginate @pins %>
+</section>
