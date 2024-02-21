@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   require 'resque/server'
   mount Resque::Server, at: '/jobs'
 
+  get 'onboarding-complete', to: 'onboardings#complete', as: 'onboarding_complete'
+
   patch 'invites/:id', to: 'invites#update', as: 'invite'
 
   get 'cart/add/:id', to: 'carts#add', as: 'cart_add'

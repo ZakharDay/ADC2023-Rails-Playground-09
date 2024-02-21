@@ -27,10 +27,15 @@
 <% end %>
 
 <div id="pins">
-  <% @pins.each do |pin| %>
-  <%#= pin_url(pin.title.parameterize) %>
+  <% @pins.each_with_index do |pin, index| %>
     <%= link_to pin, class: 'pinCard' do %>
       <%= render pin %>
     <% end %>
+
+    <% if index == 3 %>
+      <%= render 'banner' %>
+    <% end %>
   <% end %>
 </div>
+
+<%= will_paginate @pins %>

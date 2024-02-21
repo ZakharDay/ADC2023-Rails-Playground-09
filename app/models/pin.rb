@@ -11,6 +11,8 @@ class Pin < ApplicationRecord
   acts_as_taggable_on :tags
   acts_as_taggable_on :categories
 
+  self.per_page = 10
+
   # def api_as_json()
   #   {
   #     title: title,

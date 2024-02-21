@@ -16,17 +16,24 @@ class User < ApplicationRecord
   has_one :invite, class_name: "Invite", foreign_key: "invitee_id"
   has_many :invites, class_name: "Invite", foreign_key: "inviter_id"
 
-  after_create :create_profile
-  after_create :create_invites
+  has_one :onboarding
 
-  def create_profile
-    Profile.create(user_id: id, username: "test", about: "Test test test")
+  after_create :create_user_profile
+  after_create :create_invites
+  after_create :create_user_onboarding
+
+  def create_user_profile
+    self.create_profile(username: "test", about: "Test test test")
   end
 
   def create_invites
     3.times do
       Invite.create(inviter_id: id)
     end
+  end
+
+  def create_user_onboarding
+    self.create_onboarding
   end
 
 end

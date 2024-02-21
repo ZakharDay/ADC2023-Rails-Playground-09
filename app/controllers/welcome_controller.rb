@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  layout 'custom'
+  # layout 'custom'
 
   def index
     @subscription = Subscription.new
