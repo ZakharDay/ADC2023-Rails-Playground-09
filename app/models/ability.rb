@@ -24,6 +24,8 @@ class Ability
     can :manage, PolyComment, user_id: user.id
 
     can :read, Post
+    can :manage, Post
+
     can :read, Profile
     can :manage, Profile, user_id: user.id
 

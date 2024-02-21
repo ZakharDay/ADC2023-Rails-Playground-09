@@ -6,7 +6,7 @@ def seed
   clean_content_folders
   create_admin
   create_users
-  create_invites(3)
+  # create_invites(3)
   create_pins(100)
   create_comments(2..8)
   create_comment_replies(1000)

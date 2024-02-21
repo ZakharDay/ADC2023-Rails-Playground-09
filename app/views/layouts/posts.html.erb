@@ -1,0 +1,46 @@
+<%
+  body_class_name = 'default'
+
+  if controller_name == 'welcome' && action_name == 'index'
+    body_class_name = 'welcome'
+  end
+%>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= display_meta_tags site: "Название сервиса",
+      reverse: true,
+      og: {
+        title: :title,
+        image: request.base_url + "/shared/index_share.png",
+        url: request.base_url + request.path
+      }
+    %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="<%= body_class_name %>">
+    <%= api_v1_sign_up_url %>
+    <%= render 'circles' %>
+    <%= render 'menubar' %>
+    <%= render 'cartbar' %>
+
+    <%= content_tag 'div', class: 'test' do %>
+      <div>Test</div>
+    <% end %>
+
+    <section class="contentArea">
+      <%= yield %>
+    </section>
+
+    <%= render 'footer' %>
+  </body>
+</html>

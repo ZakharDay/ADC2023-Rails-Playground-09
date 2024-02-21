@@ -15,5 +15,6 @@
  *= require fonts
  *= require basics
  *= require pins
+ *= require actiontext
  *= require_tree ./components
  */

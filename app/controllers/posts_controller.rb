@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
   before_action :set_post, only: %i[ show edit update destroy ]
-  layout 'custom'
+  before_action :set_class_name, only: %i[ new edit ]
+  # layout 'custom'
 
   # GET /posts or /posts.json
   def index
@@ -86,5 +87,9 @@ class PostsController < ApplicationController
       end
 
       p.permit(:type, :title, :body, :cover, :video)
+    end
+
+    def set_class_name
+      @post_class_name = ActiveSupport::Inflector.underscore(@post.class.to_s)
     end
 end
