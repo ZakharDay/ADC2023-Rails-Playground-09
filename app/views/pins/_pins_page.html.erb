@@ -1,5 +1,5 @@
 <% pins.each_with_index do |pin, index| %>
-  <%= link_to pin, class: 'pinCard' do %>
+  <%= link_to pin, class: 'pinCard', data: { turbo: false } do %>
     <%= render pin %>
   <% end %>
 

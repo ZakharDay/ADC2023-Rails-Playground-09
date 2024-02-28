@@ -108,6 +108,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_21_090624) do
   create_table "pins", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.datetime "ending_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "pin_image"

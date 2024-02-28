@@ -2,6 +2,11 @@
 
 <h1><%= title @pin.title %></h1>
 
+<br><br>
+Осталось
+<%= distance_of_time_in_words_to_now(@pin.created_at + 2.hours) %>
+<br><br>
+
 <%= render @pin %>
 
 <h3>PolyComments</h3>

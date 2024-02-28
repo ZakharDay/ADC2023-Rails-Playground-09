@@ -5,7 +5,8 @@ class PinsController < ApplicationController
 
   # GET /pins or /pins.json
   def index
-    @pins = Pin.paginate(page: params[:page])
+    @pins = Pin.all.active.paginate(page: params[:page])
+    # @pins = Pin.paginate(page: params[:page])
     # @pins = Pin.all
 
     # Meta

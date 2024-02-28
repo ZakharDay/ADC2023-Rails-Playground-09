@@ -80,7 +80,7 @@ end
 def create_pins(quantity)
   quantity.times do
     user = User.all.sample
-    pin = Pin.create(title: create_sentence, description: create_sentence, pin_image: upload_random_image, user_id: user.id)
+    pin = Pin.create(title: create_sentence, description: create_sentence, pin_image: upload_random_image, user_id: user.id, ending_at: Time.now + 3.days)
     puts "Pin with id #{pin.id} just created"
   end
 end
