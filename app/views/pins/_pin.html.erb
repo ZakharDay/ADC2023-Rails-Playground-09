@@ -1,10 +1,10 @@
-<div id="<%= dom_id pin %>">
+<div class="pinCard" id="<%= dom_id(pin) %>">
   <%= image_tag pin.pin_image.url, width: 300 if pin.pin_image.url %>
 
   <%= pin.user.email %>
 
   <p>
-    <%= pin.description %>
+    <%= link_to pin.description, pin, data: { turbo: false } %>
   </p>
 
   <h3>Tags</h3>
@@ -24,5 +24,8 @@
       </div>
     <% end %>
   </div>
+
+  <%= render 'pins/favourite_button', pin: pin %>
+  <%= render 'pins/like_button', pin: pin %>
 
 </div>

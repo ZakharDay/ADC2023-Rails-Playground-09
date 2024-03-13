@@ -27,13 +27,15 @@
     <%= link_to "New pin", new_pin_path %>
   <% end %>
 
+  <%= turbo_stream_from "pins" %>
+
   <%= turbo_frame_tag 'pins' do %>
     <%= render partial: 'pins_page', locals: { pins: @pins } %>
   <% end %>
 
-  <%= turbo_frame_tag 'pins_pagination' do %>
-    <%= render partial: 'pins_next_page_button', locals: { pins: @pins } %>
-  <% end %>
+  <%#= turbo_frame_tag 'pins_pagination' do %>
+    <%#= render partial: 'pins_next_page_button', locals: { pins: @pins } %>
+  <%# end %>
 
   <%#= will_paginate @pins %>
 </section>

@@ -18,6 +18,12 @@ class User < ApplicationRecord
 
   has_one :onboarding
 
+  has_many :favourites
+  has_many :pins_i_favourited, through: :favourites, source: 'pin'
+
+  has_many :likes
+  has_many :pins_i_liked, through: :likes, source: 'pin'
+
   after_create :create_user_profile
   after_create :create_invites
   after_create :create_user_onboarding

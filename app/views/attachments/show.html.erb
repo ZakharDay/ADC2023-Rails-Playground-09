@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @attachment %>
+
+<div>
+  <%= link_to "Edit this attachment", edit_attachment_path(@attachment) %> |
+  <%= link_to "Back to attachments", attachments_path %>
+</div>
+
+<%= turbo_frame_tag "new_attachment_button" do %>
+  <%= link_to "New attachment", new_attachment_path %>
+<% end %>

@@ -6,6 +6,12 @@ class Pin < ApplicationRecord
   has_many :poly_comments, as: :commentable, dependent: :destroy
   belongs_to :user
 
+  has_many :favourites
+  has_many :users_who_favourited, through: :favourites, source: 'user'
+
+  has_many :likes
+  has_many :users_who_liked, through: :likes, source: 'user'
+
   mount_uploader :pin_image, PinImageUploader
 
   acts_as_taggable_on :tags
@@ -25,4 +31,12 @@ class Pin < ApplicationRecord
   # def to_param
   #   "#{title.parameterize}"
   # end
+
+  after_touch do |pin|
+    puts "=========================="
+    puts "You have touched an object"
+    puts "=========================="
+
+    Turbo::StreamsChannel.broadcast_replace_to("pin_#{id}", content: self)
+  end
 end

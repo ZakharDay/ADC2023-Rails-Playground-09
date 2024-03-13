@@ -1,0 +1,11 @@
+<div id="<%= dom_id(attachment) %>">
+  <%= image_tag attachment.file.url, width: 500 %>
+
+  <p>
+    <%= link_to "Show this attachment", attachment %>
+    <br>
+    <%= button_to "Destroy this attachment", attachment, method: :delete, data: { turbo_confirm: "Вы уверены, что хотите удалить вложение?" } %>
+  </p>
+
+  <br><br>
+</div>

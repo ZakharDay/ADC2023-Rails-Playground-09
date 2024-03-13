@@ -1,13 +1,13 @@
 class PinsController < ApplicationController
   load_and_authorize_resource
-  before_action :set_pin, only: %i[ show edit update destroy ]
+  before_action :set_pin, only: %i[ show edit update destroy toggle_favourite toggle_like ]
   layout :resolve_layout
 
   # GET /pins or /pins.json
   def index
-    @pins = Pin.all.active.paginate(page: params[:page])
+    # @pins = Pin.all.active.paginate(page: params[:page])
     # @pins = Pin.paginate(page: params[:page])
-    # @pins = Pin.all
+    @pins = Pin.all
 
     # Meta
     # @title = "Пины | Название сервиса"
@@ -70,6 +70,38 @@ class PinsController < ApplicationController
         format.json { render json: @pin.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def toggle_favourite
+    pin_user_ids = []
+
+    @pin.users_who_favourited.each do |user|
+      pin_user_ids << user.id
+    end
+
+    if pin_user_ids.include?(current_user.id)
+      current_user.pins_i_favourited.destroy(@pin)
+    else
+      current_user.pins_i_favourited << @pin
+    end
+
+    set_pin
+  end
+
+  def toggle_like
+    pin_user_ids = []
+
+    @pin.users_who_liked.each do |user|
+      pin_user_ids << user.id
+    end
+
+    if pin_user_ids.include?(current_user.id)
+      current_user.pins_i_liked.destroy(@pin)
+    else
+      current_user.pins_i_liked << @pin
+    end
+
+    set_pin
   end
 
   # DELETE /pins/1 or /pins/1.json

@@ -14,10 +14,14 @@ class Ability
 
     return unless user.present?
 
+    can :manage, Attachment
+
     can :create, Post
     # can :manage, Post, user_id: user.id
 
     can :create, Pin
+    can :toggle_favourite, Pin
+    can :toggle_like, Pin
     can :manage, Pin, user_id: user.id
 
     can :create, PolyComment
